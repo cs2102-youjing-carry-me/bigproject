@@ -7,6 +7,7 @@ class CreateStuffs < ActiveRecord::Migration[5.0]
       t.string :return_location
       t.boolean :availability
       t.datetime :available_date
+      t.datetime :bidding_endtime
 
       t.timestamps
     end
