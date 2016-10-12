@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  stuff: one
+  user: one
+  point: 
+  status: false
+
+two:
+  stuff: two
+  user: two
+  point: 
+  status: false

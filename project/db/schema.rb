@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161012090108) do
+ActiveRecord::Schema.define(version: 20161012090320) do
+
+  create_table "bids", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "stuff_id"
+    t.integer  "user_id"
+    t.integer  "point"
+    t.boolean  "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["stuff_id"], name: "index_bids_on_stuff_id", using: :btree
+    t.index ["user_id"], name: "index_bids_on_user_id", using: :btree
+  end
 
   create_table "stuffs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -31,5 +42,7 @@ ActiveRecord::Schema.define(version: 20161012090108) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "bids", "stuffs"
+  add_foreign_key "bids", "users"
   add_foreign_key "stuffs", "users"
 end
