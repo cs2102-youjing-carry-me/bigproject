@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @stuff.name %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @stuff.user %>
+</p>
+
+<p>
+  <strong>Pickup location:</strong>
+  <%= @stuff.pickup_location %>
+</p>
+
+<p>
+  <strong>Return location:</strong>
+  <%= @stuff.return_location %>
+</p>
+
+<p>
+  <strong>Availability:</strong>
+  <%= @stuff.availability %>
+</p>
+
+<p>
+  <strong>Available date:</strong>
+  <%= @stuff.available_date %>
+</p>
+
+<%= link_to 'Edit', edit_stuff_path(@stuff) %> |
+<%= link_to 'Back', stuffs_path %>

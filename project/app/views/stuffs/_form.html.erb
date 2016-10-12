@@ -1,0 +1,47 @@
+<%= form_for(stuff) do |f| %>
+  <% if stuff.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(stuff.errors.count, "error") %> prohibited this stuff from being saved:</h2>
+
+      <ul>
+      <% stuff.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :user_id %>
+    <%= f.text_field :user_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :pickup_location %>
+    <%= f.text_field :pickup_location %>
+  </div>
+
+  <div class="field">
+    <%= f.label :return_location %>
+    <%= f.text_field :return_location %>
+  </div>
+
+  <div class="field">
+    <%= f.label :availability %>
+    <%= f.check_box :availability %>
+  </div>
+
+  <div class="field">
+    <%= f.label :available_date %>
+    <%= f.datetime_select :available_date %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

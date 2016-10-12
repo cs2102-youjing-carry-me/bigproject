@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  user: one
+  pickup_location: MyString
+  return_location: MyString
+  availability: false
+  available_date: 2016-10-12 17:01:08
+
+two:
+  name: MyString
+  user: two
+  pickup_location: MyString
+  return_location: MyString
+  availability: false
+  available_date: 2016-10-12 17:01:08
