@@ -1,23 +1,23 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
-  <%= @stuff.name %>
+<strong>Stuff Name:</strong>
+  <%= @stuff.stuff_name %>
 </p>
 
 <p>
-  <strong>User:</strong>
-  <%= @stuff.user %>
+  <strong>Stuff Type:</strong>
+  <%= @stuff.stuff_type %>
 </p>
 
 <p>
   <strong>Pickup location:</strong>
-  <%= @stuff.pickup_location %>
+  <%= @stuff.pick_up_point %>
 </p>
 
 <p>
   <strong>Return location:</strong>
-  <%= @stuff.return_location %>
+  <%= @stuff.return_point %>
 </p>
 
 <p>
@@ -26,13 +26,13 @@
 </p>
 
 <p>
-  <strong>Available date:</strong>
-  <%= @stuff.available_date %>
+  <strong>Pickup time:</strong>
+  <%= @stuff.pick_up_time %>
 </p>
 
 <p>
-  <strong>Bidding endtime:</strong>
-  <%= @stuff.bidding_endtime %>
+  <strong>Return time:</strong>
+  <%= @stuff.return_time %>
 </p>
 
 <%= link_to 'Edit', edit_stuff_path(@stuff) %> |

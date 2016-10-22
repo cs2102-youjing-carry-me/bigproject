@@ -12,38 +12,41 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
+    <%= f.label :stuff_name %>
+    <%= f.text_field :stuff_name %>
   </div>
 
   <div class="field">
-    <%= f.label :user_id %>
-    <%= f.text_field :user_id %>
+    <%= f.label :stuff_description %>
+    <%= f.text_area :stuff_description %>
+  </div>
+
+  <%= f.label :stuff_type %>
+  <%= select_tag(:stuff_type, options_for_select([['tool', 1], ['appliance', 2], ['furniture', 3], ['book', 4]])) %></p>
+
+  <div class="field">
+    <%= f.label :pick_up_point %>
+    <%= f.text_field :pick_up_point %>
   </div>
 
   <div class="field">
-    <%= f.label :pickup_location %>
-    <%= f.text_field :pickup_location %>
+    <%= f.label :return_point %>
+    <%= f.text_field :return_point %>
   </div>
 
   <div class="field">
-    <%= f.label :return_location %>
-    <%= f.text_field :return_location %>
+    <%= f.label :pick_up_time %>
+    <%= f.datetime_select :pick_up_time %>
   </div>
 
   <div class="field">
-    <%= f.label :availability %>
-    <%= f.check_box :availability %>
+    <%= f.label :return_time %>
+    <%= f.datetime_select :return_time %>
   </div>
 
   <div class="field">
-    <%= f.label :available_date %>
-    <%= f.datetime_select :available_date %>
-  </div>
-
-  <div class="field">
-    <%= f.label :bidding_endtime %>
-    <%= f.datetime_select :bidding_endtime %>
+    <%= f.label :cost %>
+    <%= f.text_field :cost %>
   </div>
 
   <div class="actions">

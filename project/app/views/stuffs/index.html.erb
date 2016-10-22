@@ -2,7 +2,7 @@
 
 <h1>Stuffs</h1>
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
       <th>Name</th>
@@ -19,13 +19,13 @@
   <tbody>
     <% @stuffs.each do |stuff| %>
       <tr>
-        <td><%= stuff.name %></td>
-        <td><%= stuff.user %></td>
-        <td><%= stuff.pickup_location %></td>
-        <td><%= stuff.return_location %></td>
+        <td><%= stuff.stuff_name %></td>
+        <td><%= stuff.stuff_type %></td>
+        <td><%= stuff.pick_up_point %></td>
+        <td><%= stuff.return_point %></td>
         <td><%= stuff.availability %></td>
-        <td><%= stuff.available_date %></td>
-        <td><%= stuff.bidding_endtime %></td>
+        <td><%= stuff.pick_up_time %></td>
+        <td><%= stuff.return_time %></td>
         <td><%= link_to 'Show', stuff %></td>
         <td><%= link_to 'Edit', edit_stuff_path(stuff) %></td>
         <td><%= link_to 'Destroy', stuff, method: :delete, data: { confirm: 'Are you sure?' } %></td>

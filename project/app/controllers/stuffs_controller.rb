@@ -64,11 +64,13 @@ class StuffsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_stuff
-      @stuff = Stuff.find(params[:id])
+      @paramss = params[:id].split(',')
+      @stuff = Stuff.get_stuff(@paramss[0], @paramss[1])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def stuff_params
-      params.require(:stuff).permit(:name, :user_id, :pickup_location, :return_location, :availability, :available_date, :bidding_endtime)
+      params[:stuff][:owner_username] = current_user.username
+      params.require(:stuff).permit(:owner_username, :stuff_name, :stuff_description, :stuff_type, :pick_up_point, :return_point, :pick_up_time, :return_time, :cost)
     end
 end
