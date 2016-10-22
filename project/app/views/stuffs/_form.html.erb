@@ -22,7 +22,7 @@
   </div>
 
   <%= f.label :stuff_type %>
-  <%= select_tag(:stuff_type, options_for_select([['tool', 1], ['appliance', 2], ['furniture', 3], ['book', 4]])) %></p>
+  <%= f.select :stuff_type, options_for_select([['tool', 'tool'], ['appliance', 'appliance'], ['furniture', 'furniture'], ['book', 'book']]) %></p>
 
   <div class="field">
     <%= f.label :pick_up_point %>
