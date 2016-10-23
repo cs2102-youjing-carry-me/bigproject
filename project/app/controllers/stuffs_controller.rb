@@ -10,6 +10,7 @@ class StuffsController < ApplicationController
   # GET /stuffs/1
   # GET /stuffs/1.json
   def show
+    @bids = Bid.get_stuff_bids(@stuff.create_time, @stuff.owner_username)
   end
 
   # GET /stuffs/new

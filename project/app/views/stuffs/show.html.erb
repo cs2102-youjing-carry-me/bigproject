@@ -35,5 +35,10 @@
   <%= @stuff.return_time %>
 </p>
 
+
+<% @bids.each do |bid| %>
+  <p> bid.create_time </p>
+<% end %>
+
 <%= link_to 'Edit', edit_stuff_path(@stuff) %> |
 <%= link_to 'Back', stuffs_path %>
