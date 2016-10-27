@@ -29,7 +29,7 @@ class StuffsController < ApplicationController
 
     respond_to do |format|
       if @stuff.save
-        format.html { redirect_to @stuff, notice: 'Stuff was successfully created.' }
+        format.html { redirect_to stuffs_url, notice: 'Stuff was successfully created.' }
         format.json { render :show, status: :created, location: @stuff }
       else
         format.html { render :new }

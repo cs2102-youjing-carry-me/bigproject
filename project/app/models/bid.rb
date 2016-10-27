@@ -1,5 +1,5 @@
 class Bid < ApplicationRecord
-	self.primary_keys = :stuff_create_time, :owner_username, :bidder
+	self.primary_keys = :stuff_create_time, :owner_username, :bidder_username
   belongs_to :stuff
   belongs_to :user
 

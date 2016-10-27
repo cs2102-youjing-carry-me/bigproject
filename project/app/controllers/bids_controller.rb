@@ -1,5 +1,5 @@
 class BidsController < ApplicationController
-  before_action :set_bid, only: [:show, :edit, :update, :destroy]
+  before_action :set_bid, only: [:show, :edit, :update, :destroy, :approve]
 
   # GET /bids
   # GET /bids.json
@@ -61,14 +61,23 @@ class BidsController < ApplicationController
     end
   end
 
+  def approve
+    User.transaction do
+      Bid.pickup_bid(@paramss[0], @paramss[1], @paramss[2])
+    end
+    redirect_to stuffs_path
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_bid
-      @bid = Bid.find(params[:id])
+      @paramss = params[:id].split(',')
+      @bid = Bid.get_bid(@paramss[0], @paramss[1], @paramss[2])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bid_params
-      params.require(:bid).permit(:stuff_id, :user_id, :point, :status)
+      params[:bid][:bidder_username] = current_user.username
+      params.require(:bid).permit(:stuff_create_time, :owner_username, :bidder_username, :bidding_points, :status, :create_time)
     end
 end
