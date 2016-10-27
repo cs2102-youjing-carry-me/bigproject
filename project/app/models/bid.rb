@@ -41,21 +41,22 @@ class Bid < ApplicationRecord
 
   def self.pickup_bid(stuff_create_time, owner_username, bidder_username)
   	stuff = Stuff.get_stuff(stuff_create_time, owner_username)
-  	return false unless stuff.present?
-  	bidder_username = User.get_user(bidder_username)
-  	return false unless bidder_username.present?
+  	#return false unless stuff.present?
+  	bidder = User.get_user(bidder_username)
+  	#return false unless bidder.present?
   	bid = Bid.get_bid(stuff_create_time, owner_username, bidder_username)
+    stuff_create_time = stuff_create_time.to_datetime.strftime("%Y-%m-%d %H:%M:%S")
   	
   	sql1 = "UPDATE bids "\
       "SET status=1 "\
       "WHERE stuff_create_time='#{stuff_create_time}' AND "\
       "owner_username='#{owner_username}' AND "\
-      "bidder='#{bidder_username_}';"
+      "bidder_username='#{bidder_username}';"
     ActiveRecord::Base.connection.execute sql1
 
     sql2 = "UPDATE stuffs "\
       "SET availability=1 "\
-      "WHERE stuff_create_time='#{stuff_create_time}' AND "\
+      "WHERE create_time='#{stuff_create_time}' AND "\
       "owner_username='#{owner_username}';"
     ActiveRecord::Base.connection.execute sql2
 

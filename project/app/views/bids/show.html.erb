@@ -25,5 +25,9 @@
   <%= @bid.create_time %>
 </p>
 
+<% if @bid.bidder_username == current_user.username %>
+<%= link_to 'Approve', approve_bid_path(@bid), method: :post %> |
+<% end %>
+
 <%= link_to 'Edit', edit_bid_path(@bid) %> |
 <%= link_to 'Back', bids_path %>

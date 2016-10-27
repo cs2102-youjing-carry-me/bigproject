@@ -62,9 +62,7 @@ class BidsController < ApplicationController
   end
 
   def approve
-    User.transaction do
-      Bid.pickup_bid(@paramss[0], @paramss[1], @paramss[2])
-    end
+    Bid.pickup_bid(@paramss[0], @paramss[1], @paramss[2])
     redirect_to stuffs_path
   end
 
