@@ -1,5 +1,5 @@
 class StuffsController < ApplicationController
-  before_action :set_stuff, only: [:show, :edit, :update, :destroy]
+  before_action :set_stuff, only: [:show, :edit, :update, :destroy, :bid_stuff]
 
   # GET /stuffs
   # GET /stuffs.json
@@ -60,6 +60,17 @@ class StuffsController < ApplicationController
       format.html { redirect_to stuffs_url, notice: 'Stuff was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def bid_stuff
+    @bid = Bid.new
+    @bid.stuff_create_time = @stuff.create_time
+    @bid.owner_username = @stuff.owner_username
+    @bid.bidder_username = current_user.username
+    @bid.bidding_points = 1
+    @bid.create_time = Time.now
+    @bid.save
+    respond_to :js
   end
 
   private

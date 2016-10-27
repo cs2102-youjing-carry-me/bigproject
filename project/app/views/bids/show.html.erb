@@ -2,22 +2,27 @@
 
 <p>
   <strong>Stuff:</strong>
-  <%= @bid.stuff %>
+  <%= @bid.stuff_create_time %>
 </p>
 
 <p>
   <strong>User:</strong>
-  <%= @bid.user %>
+  <%= @bid.owner_username %>
 </p>
 
 <p>
   <strong>Point:</strong>
-  <%= @bid.point %>
+  <%= @bid.bidder_username %>
 </p>
 
 <p>
   <strong>Status:</strong>
-  <%= @bid.status %>
+  <%= @bid.bidding_points %>
+</p>
+
+<p>
+  <strong>Bid create time:</strong>
+  <%= @bid.create_time %>
 </p>
 
 <%= link_to 'Edit', edit_bid_path(@bid) %> |

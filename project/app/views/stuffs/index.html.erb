@@ -31,8 +31,21 @@
         <td><%= link_to 'Edit', edit_stuff_path(stuff) %></td>
         <td><%= link_to 'Destroy', stuff, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
-        <% if !stuff.availability.present? %>
-        <td><%= link_to 'Bid', bids_path %></td>
+
+        <% bids = Bid.get_stuff_bids(stuff.create_time, stuff.owner_username) %>
+        <% bid_taken = Bid.get_taken_stuff_bid(stuff.create_time, stuff.owner_username) %>
+        <% if bid_taken.present? %>
+            <td>Taken by <%= bid_taken.bidder_username %></td>
+        <% else %>
+            <td id="<%= stuff.hash %>">
+                <% bids.each do |bid| %>
+                    <%= render partial: 'stuffs/bid', locals: { bid: bid } %>
+                <% end %>
+                <input type="text" style="width: 4px">  
+                <% if !stuff.availability.present? %>
+                  <li><%= link_to 'Bid now', bid_stuff_path(stuff), remote: true, method: :post %></li>
+                <% end %>
+            </td>
         <% end %>
       </tr>
     <% end %>

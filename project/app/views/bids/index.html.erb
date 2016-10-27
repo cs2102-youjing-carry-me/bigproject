@@ -2,7 +2,7 @@
 
 <h1>Bids</h1>
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
       <th>Stuff</th>
@@ -16,10 +16,10 @@
   <tbody>
     <% @bids.each do |bid| %>
       <tr>
-        <td><%= bid.stuff %></td>
-        <td><%= bid.user %></td>
-        <td><%= bid.point %></td>
-        <td><%= bid.status %></td>
+        <td><%= bid.stuff_create_time %></td>
+        <td><%= bid.owner_username %></td>
+        <td><%= bid.bidder_username %></td>
+        <td><%= bid.bidding_points %></td>
         <td><%= link_to 'Show', bid %></td>
         <td><%= link_to 'Edit', edit_bid_path(bid) %></td>
         <td><%= link_to 'Destroy', bid, method: :delete, data: { confirm: 'Are you sure?' } %></td>
