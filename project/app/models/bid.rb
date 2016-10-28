@@ -39,6 +39,14 @@ class Bid < ApplicationRecord
     ActiveRecord::Base.connection.execute sql
   end
 
+  def self.delete_bid(stuff_create_time, owner_username, bidder_username)
+    sql = "DELETE FROM bids "\
+      "WHERE bids.stuff_create_time='#{stuff_create_time}' AND "\
+      "bids.owner_username = '#{owner_username}' AND "\
+      "bids.bidder_username = '#{bidder_username}';"
+    ActiveRecord::Base.connection.execute sql
+  end
+
   def self.pickup_bid(stuff_create_time, owner_username, bidder_username)
   	stuff = Stuff.get_stuff(stuff_create_time, owner_username)
   	#return false unless stuff.present?

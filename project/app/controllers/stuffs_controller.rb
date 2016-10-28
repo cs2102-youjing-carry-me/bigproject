@@ -4,7 +4,8 @@ class StuffsController < ApplicationController
   # GET /stuffs
   # GET /stuffs.json
   def index
-    @stuffs = Stuff.all
+    @stuffs = Stuff.search_stuff(params[:stuff_name], params[:stuff_type], 
+      params[:pick_up_point], params[:return_point], params[:availability])
   end
 
   # GET /stuffs/1
@@ -70,6 +71,9 @@ class StuffsController < ApplicationController
     @bid.bidding_points = params[:bidding_points]
     @bid.create_time = Time.now
     @bid.save
+    respond_to do |format|
+      format.html { redirect_to stuffs_url, notice: 'Bid was successfully added.' }
+    end
   end
 
   private

@@ -28,4 +28,13 @@ class Stuff < ApplicationRecord
 
     [stuff_name, stuff_description, stuff_type, create_time, owner_username, pick_up_point, return_point, pick_up_time, return_time, create_time]
   end
+
+  def self.search_stuff(stuff_name, stuff_type, pick_up_point, return_point, availability)
+    sql = "SELECT * FROM stuffs WHERE stuff_name LIKE '%#{stuff_name}%'"
+    sql = sql + "AND stuff_type = '#{stuff_type}'" if stuff_type.present?
+    sql = sql + "AND pick_up_point LIKE '%#{pick_up_point}%'"
+    sql = sql + "AND return_point LIKE '%#{return_point}%'"
+    sql = sql + "AND availability IS NULL" if availability == "on"
+    Stuff.find_by_sql(sql)
+  end
 end
