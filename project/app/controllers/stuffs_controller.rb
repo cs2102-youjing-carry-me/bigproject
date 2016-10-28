@@ -67,10 +67,9 @@ class StuffsController < ApplicationController
     @bid.stuff_create_time = @stuff.create_time
     @bid.owner_username = @stuff.owner_username
     @bid.bidder_username = current_user.username
-    @bid.bidding_points = 1
+    @bid.bidding_points = params[:bidding_points]
     @bid.create_time = Time.now
     @bid.save
-    respond_to :js
   end
 
   private

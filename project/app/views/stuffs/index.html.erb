@@ -26,11 +26,6 @@
         <td><%= !stuff.availability.present? %></td>
         <td><%= stuff.pick_up_time %></td>
         <td><%= stuff.return_time %></td>
-        <td><%= link_to 'Show', stuff %></td>
-        <% if current_user.isAdmin || stuff.owner_username == current_user.username %>
-        <td><%= link_to 'Edit', edit_stuff_path(stuff) %></td>
-        <td><%= link_to 'Destroy', stuff, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
 
         <% bids = Bid.get_stuff_bids(stuff.create_time, stuff.owner_username) %>
         <% bid_taken = Bid.get_taken_stuff_bid(stuff.create_time, stuff.owner_username) %>
@@ -40,12 +35,25 @@
             <td id="<%= stuff.hash %>">
                 <% bids.each do |bid| %>
                     <%= render partial: 'stuffs/bid', locals: { bid: bid } %>
-                <% end %>
-                <input type="text" style="width: 4px">  
+                <% end %> 
+                <li>
                 <% if !stuff.availability.present? %>
-                  <li><%= link_to 'Bid now', bid_stuff_path(stuff), remote: true, method: :post %></li>
+                    <%= form_tag bid_stuff_path(stuff) do %>
+                        <%= text_field_tag :bidding_points %>
+                    <%= submit_tag "Bid now!" %>
                 <% end %>
+              </li>
+<!--
+                  <li><input type="text" style="width: 30px"><%= link_to 'Bid now!', bid_stuff_path(stuff), remote: true, method: :post %></li>
+                <% end %>
+                -->
             </td>
+        <% end %>
+
+        <td><%= link_to 'Show', stuff %></td>
+        <% if current_user.isAdmin || stuff.owner_username == current_user.username %>
+        <td><%= link_to 'Edit', edit_stuff_path(stuff) %></td>
+        <td><%= link_to 'Destroy', stuff, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
       </tr>
     <% end %>
