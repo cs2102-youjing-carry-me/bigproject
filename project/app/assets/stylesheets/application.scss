@@ -17,8 +17,18 @@
 @import "bootstrap";
 
 body {
-	/*
-    background: url('http://wallions.com/wp-content/uploads/2016/07/9143-1000x593.jpg');
-    */
+    background: url('http://colorlisa.com/pictures/27_1.jpg');
     background-size: cover;
+}
+
+.main-container {
+	background-color: rgba(255, 255, 255, 0.4);
+	
+}
+
+a {
+	color: #257de0;
+}
+
+a:visited {
 }

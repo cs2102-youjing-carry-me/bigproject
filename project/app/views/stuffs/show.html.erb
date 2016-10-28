@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-<strong>Stuff Name:</strong>
+  <strong>Stuff Name:</strong>
   <%= @stuff.stuff_name %>
 </p>
 
@@ -35,10 +35,35 @@
   <%= @stuff.return_time %>
 </p>
 
+<h5>bids</h5>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Stuff</th>
+      <th>User</th>
+      <th>Point</th>
+      <th>Status</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
 
-<% @bids.each do |bid| %>
-  <p> bid.create_time </p>
+  <tbody>
+    <% @bids.each do |bid| %>
+    <tr>
+      <td><%= bid.stuff_create_time %></td>
+      <td><%= bid.owner_username %></td>
+      <td><%= bid.bidder_username %></td>
+      <td><%= bid.bidding_points %></td>
+      <td><%= link_to 'Show', bid %></td>
+      <td><%= link_to 'Edit', edit_bid_path(bid) %></td>
+      <td><%= link_to 'Destroy', bid, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<% if current_user.isAdmin || @stuff.owner_username == current_user.username %>
+<%= link_to 'Edit', edit_stuff_path(@stuff) %> |
 <% end %>
 
-<%= link_to 'Edit', edit_stuff_path(@stuff) %> |
 <%= link_to 'Back', stuffs_path %>
