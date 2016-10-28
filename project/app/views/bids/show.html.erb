@@ -30,6 +30,7 @@
 <% end %>
 
 <% if @bid.bidder_username == current_user.username %>
+<%= link_to 'Destroy', @bid, method: :delete, data: { confirm: 'Are you sure?' } %> |
 <%= link_to 'Edit', edit_bid_path(@bid) %> |
 <% end %>
 <%= link_to 'Back', bids_path %>

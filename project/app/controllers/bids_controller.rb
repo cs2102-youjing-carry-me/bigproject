@@ -54,7 +54,7 @@ class BidsController < ApplicationController
   # DELETE /bids/1
   # DELETE /bids/1.json
   def destroy
-    @bid.destroy
+    @bid.delete
     respond_to do |format|
       format.html { redirect_to bids_url, notice: 'Bid was successfully destroyed.' }
       format.json { head :no_content }

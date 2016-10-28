@@ -63,6 +63,7 @@
 </table>
 
 <% if current_user.isAdmin || @stuff.owner_username == current_user.username %>
+<%= link_to 'Destroy', stuff, method: :delete, data: { confirm: 'Are you sure?' } %>
 <%= link_to 'Edit', edit_stuff_path(@stuff) %> |
 <% end %>
 
