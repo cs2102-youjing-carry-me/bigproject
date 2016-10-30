@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   resources :reports, only: [] do
     collection do
       get 'popular_pickup'
+      get 'popular_return'
     end
   end
 end
