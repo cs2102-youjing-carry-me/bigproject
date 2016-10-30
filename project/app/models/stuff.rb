@@ -43,7 +43,7 @@ class Stuff < ApplicationRecord
       'COUNT(DISTINCT b.stuff_create_time, b.owner_username, b.bidder_username) AS num_bids '\
       'FROM stuffs s LEFT JOIN bids b ON b.stuff_create_time = s.create_time AND '\
       'b.owner_username = s.owner_username '\
-      'GROUP BY s.pick_up_point ORDER BY num_stuffs, num_bids DESC'
+      'GROUP BY s.pick_up_point ORDER BY num_stuffs DESC, num_bids DESC'
     ActiveRecord::Base.connection.execute(sql).each
   end
 
@@ -52,7 +52,7 @@ class Stuff < ApplicationRecord
       'COUNT(DISTINCT b.stuff_create_time, b.owner_username, b.bidder_username) AS num_bids '\
       'FROM stuffs s LEFT JOIN bids b ON b.stuff_create_time = s.create_time AND '\
       'b.owner_username = s.owner_username '\
-      'GROUP BY s.return_point ORDER BY num_stuffs, num_bids DESC'
+      'GROUP BY s.return_point ORDER BY num_stuffs DESC, num_bids DESC'
     ActiveRecord::Base.connection.execute(sql).each
   end
 end
