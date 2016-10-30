@@ -14,4 +14,10 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   root 'stuffs#index'
+
+  resources :reports, only: [] do
+    collection do
+      get 'popular_pickup'
+    end
+  end
 end
