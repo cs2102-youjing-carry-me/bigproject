@@ -12,5 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require twitter/bootstrap
 //= require turbolinks
 //= require_tree .
+
+$(document).on('ready page:load', function() {
+    $('.datatable').DataTable({ paging: false, searching: false, ordering: true});
+});
