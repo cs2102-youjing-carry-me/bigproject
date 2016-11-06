@@ -23,7 +23,6 @@ body {
 
 .main-container {
 	background-color: rgba(255, 255, 255, 0.4);
-	
 }
 
 a {
@@ -40,4 +39,19 @@ a:visited {
 .search-block {
 	margin-top: 40px;
 	margin-bottom: 40px;
+}
+
+#user_username {
+	width: 60%;
+	margin-left: 20px;
+}
+
+#user_password {
+	width: 60%;
+	margin-left: 20px;
+}
+
+.form-inputs {
+	margin-top: 20px;
+	margin-bottom: 20px;
 }
