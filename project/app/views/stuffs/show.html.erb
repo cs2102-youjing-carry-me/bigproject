@@ -11,6 +11,11 @@
 </p>
 
 <p>
+  <strong>Stuff Details:</strong>
+  <%= @stuff.stuff_description %>
+</p>
+
+<p>
   <strong>Pickup location:</strong>
   <%= @stuff.pick_up_point %>
 </p>
@@ -35,7 +40,7 @@
   <%= @stuff.return_time %>
 </p>
 
-<h5>bids</h5>
+<h3>bids</h3>
 <table class="table table-striped">
   <thead>
     <tr>
@@ -63,7 +68,7 @@
 </table>
 
 <% if current_user.isAdmin || @stuff.owner_username == current_user.username %>
-<%= link_to 'Destroy', stuff, method: :delete, data: { confirm: 'Are you sure?' } %>
+<%= link_to 'Destroy', @stuff, method: :delete, data: { confirm: 'Are you sure?' } %>
 <%= link_to 'Edit', edit_stuff_path(@stuff) %> |
 <% end %>
 
